@@ -13,11 +13,6 @@
         os_icon                 # os identifier
         dir                     # current directory
         vcs                     # git status
-        # =========================[ Line #2 ]=========================
-                         # \n
-        nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-        nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
-        nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
         node_version          # node.js version
         rust_version          # rustc version (https://www.rust-lang.org)
         java_version          # java version (https://www.java.com/)
@@ -38,7 +33,6 @@
         wifi
         battery               # internal battery
         time
-        example               # example user-defined segment (see prompt_example function below)
     )
     typeset -g POWERLEVEL9K_MODE=nerdfont-complete
     typeset -g POWERLEVEL9K_ICON_PADDING=moderate
@@ -114,7 +108,9 @@
     ##################################[ dir: current directory ]##################################
     typeset -g POWERLEVEL9K_DIR_BACKGROUND=8
     typeset -g POWERLEVEL9K_DIR_FOREGROUND=15
-    typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
+    typeset -g POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+    typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=""
+    typeset -g POWERLEVEL9K_SHORTEN_STRATEGY="truncate_with_package_name"
     typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
     typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=250
     typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=255
@@ -161,7 +157,19 @@
     typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=8
     #
     typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\UE0A0 '
+    typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='@'
+    typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='*'
+    typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=':⇣'
+    typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=':⇡'
     typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON=' '
+    typeset -g POWERLEVEL9K_VCS_LOADING_TEXT='gitloading...'
+    # Don't wait for Git status even for a millisecond, so that prompt always updates
+    # asynchronously when Git state changes.
+    typeset -g POWERLEVEL9K_VCS_MAX_SYNC_LATENCY_SECONDS=60000
+    # Cyan ahead/behind arrows.
+    typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$cyan
+    # Don't show remote branch, current tag or stashes.
+    typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
     
     # Formatter for Git status.
     #
@@ -476,7 +484,7 @@
     # typeset -g POWERLEVEL9K_ASDF_LUA_SHOW_ON_UPGLOB='*.foo|*.bar'
     
     # Java version from asdf.
-    typeset -g POWERLEVEL9K_ASDF_JAVA_FOREGROUND=16
+    typeset -g POWERLEVEL9K_ASDF_JAVA_FOREGROUND=0
     typeset -g POWERLEVEL9K_ASDF_JAVA_BACKGROUND=4
     typeset -g POWERLEVEL9K_ASDF_JAVA_VISUAL_IDENTIFIER_EXPANSION='⭐'
     # typeset -g POWERLEVEL9K_ASDF_JAVA_SHOW_ON_UPGLOB='*.foo|*.bar'
@@ -846,7 +854,7 @@
     # Separate environment name from Node version only with a space.
     typeset -g POWERLEVEL9K_NODEENV_{LEFT,RIGHT}_DELIMITER=
     # Custom icon.
-    # typeset -g POWERLEVEL9K_NODEENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+    typeset -g POWERLEVEL9K_NODEENV_VISUAL_IDENTIFIER_EXPANSION=''
     
     ##############################[ node_version: node.js version ]###############################
     # Node version color.
@@ -855,7 +863,7 @@
     # Show node version only when in a directory tree containing package.json.
     typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
     # Custom icon.
-    # typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
+    typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
     
     #######################[ go_version: go version (https://golang.org) ]########################
     # Go version color.
@@ -916,14 +924,14 @@
     
     ####################[ java_version: java version (https://www.java.com/) ]####################
     # Java version color.
-    typeset -g POWERLEVEL9K_JAVA_VERSION_FOREGROUND=7
+    typeset -g POWERLEVEL9K_JAVA_VERSION_FOREGROUND=255
     typeset -g POWERLEVEL9K_JAVA_VERSION_BACKGROUND=1
     # Show java version only when in a java project subdirectory.
     typeset -g POWERLEVEL9K_JAVA_VERSION_PROJECT_ONLY=true
     # Show brief version.
     typeset -g POWERLEVEL9K_JAVA_VERSION_FULL=false
     # Custom icon.
-    #typeset -g POWERLEVEL9K_JAVA_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+    typeset -g POWERLEVEL9K_JAVA_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
     
     ###[ package: name@version from package.json (https://docs.npmjs.com/files/package.json) ]####
     # Package color.

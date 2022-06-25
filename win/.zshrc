@@ -13,15 +13,12 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 # Load the theme.
 antigen theme romkatv/powerlevel10k
-##
-ZSH_AUTOSUGGEST_USE_ASYNC=true
-###
+
 # Alias
 alias cls="clear"
 alias ..="cd .."
 alias ....="cd ../.."
 alias look="find * -type f | fzf > selected"
-alias see="exa --icons --long --header --git --group-directories-first -all --time-style=long-iso"
 alias search="grep --color -rnw ./ -e "
 alias ports="lsof -PiTCP -sTCP:LISTEN"
 alias gc="git -c http.sslVerify=false clone"
@@ -33,7 +30,7 @@ alias graph="git log --color --graph --pretty=format:\"%h | %ad | %an | %s%d\" -
 alias hist="git log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate"
 alias xclip="xclip -selection c"
 alias speedtest="curl -o /dev/null cachefly.cachefly.net/100mb.test"
-alias cats='highlight -O ansi --force'
+alias cats='bat'
 export LSCOLORS=""
 ###
 DISABLE_MAGIC_FUNCTIONS=true
