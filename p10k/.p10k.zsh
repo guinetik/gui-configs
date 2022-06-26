@@ -637,13 +637,13 @@
     # Show average CPU load over this many last minutes. Valid values are 1, 5 and 15.
     typeset -g POWERLEVEL9K_LOAD_WHICH=5
     # Load color when load is under 50%.
-    typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=7
+    typeset -g POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=0
     typeset -g POWERLEVEL9K_LOAD_NORMAL_BACKGROUND=2
     # Load color when load is between 50% and 70%.
     typeset -g POWERLEVEL9K_LOAD_WARNING_FOREGROUND=0
     typeset -g POWERLEVEL9K_LOAD_WARNING_BACKGROUND=3
     # Load color when load is over 70%.
-    typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=7
+    typeset -g POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND=0
     typeset -g POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND=13
     # Custom icon.
     # typeset -g POWERLEVEL9K_LOAD_VISUAL_IDENTIFIER_EXPANSION='⭐'
