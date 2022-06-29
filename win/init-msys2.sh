@@ -2,7 +2,15 @@
 #
 # Inspirado por: https://gist.github.com/otonii/e6bae9fabe0f19daa969f10e9047970d
 # Atualizando bibliotecas MSYS2
+echo "$(tput setaf 6)>>$(tput setaf 0 setab 6)Installing linux apps $(tput sgr 0)"
+pacman -S man vim nano
+pacman -S openssh rsync make
+pacman -S zip unzip
+pacman -S mingw64/mingw-w64-x86_64-jq
+pacman -S diffutils
 echo "$(tput setaf 6)>>$(tput sgr 0)"
+echo "$(tput setaf 6)>>$(tput setaf 0 setab 6)Installing zsh $(tput sgr 0)"
+pacman -S zsh
 CONFIG_DIR=$(pwd)
 echo "$(tput setaf 6)>>$(tput setaf 0 setab 6)Installing oh-my-zsh...$(tput sgr 0)"
 #
