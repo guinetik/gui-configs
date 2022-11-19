@@ -1,0 +1,65 @@
+## packages file to be used on choco-robot.ps1
+## This will install the software in order or importance for me.
+## the idea is that i can cancel at some point if I want to skip the rest.
+##
+## DEV ENVIRONMENT
+openjdk
+nodejs
+ruby
+python
+git
+apache-httpd
+## BROWSERS
+brave
+#firefox
+#googlechrome 
+##
+## IDEs
+vscode
+insomnia-rest-api-client
+postman
+jetbrainstoolbox
+intellijidea-ultimate
+webstorm
+mysql.workbench
+oracle-sql-developer
+##
+## NOTES
+##
+obsidian
+notepadplusplus
+##
+## OFFICE
+##
+libreoffice-fresh
+screentogif.install
+pdfxchangeeditor
+##
+## TOOLING
+cmder
+hwinfo
+lively
+powertoys
+##
+## COMMS
+##
+slack
+zoom
+discord
+microsoft-teams
+whatsapp
+##
+## MEDIA
+spotify
+vlc
+stremio
+picotorrent
+##
+## GAMES
+nvidia-geforce-now
+steam-client
+##
+## NETWORK-SCIENCE
+graphviz
+gephi
+anaconda3
