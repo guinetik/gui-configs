@@ -78,7 +78,7 @@ function install() {
     else {
         try {
             Write-ColorOutput cyan "Installing oh-my-posh...";
-            winget install JanDeDobbeleer.OhMyPosh -s winget
+            winget install JanDeDobbeleer.OhMyPosh -s winget --VERSION 8.7.0
         } catch {
             LogCodeAndExit "Error installing oh-my-posh!" $_
         }

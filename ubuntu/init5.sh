@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
+#set -ex
 # getting this script's DIR
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # getting current user's DIR
-HOME_DIR=$(bash -c "cd ~$(printf %q $USER) && pwd")
+#HOME_DIR=$(bash -c -s "cd ~$(printf %q $USER) && pwd")
+HOME_DIR=~
+echo $SCRIPT_DIR
+echo $HOME_DIR
 ###
 LIB_NAME="bash-oo-framework"
 LIB_LINK='https://github.com/niieani/bash-oo-framework/archive/refs/tags/2.1.tar.gz'
@@ -53,7 +57,7 @@ try {
     read -n1 -p "$(UI.Color.Cyan)Choose: [$(UI.Color.Yellow)y$(UI.Color.Default),$(UI.Color.Yellow)n$(UI.Color.Default)]$(UI.Color.Default)" doit
     echo ""
     case $doit in
-        y|Y) sh -c ./util/install-docker-compose.sh
+        y|Y) bash ../util/install-docker-compose.sh
     esac
     echo ""
     ####
@@ -61,7 +65,7 @@ try {
     read -n1 -p "$(UI.Color.Cyan)Choose: [$(UI.Color.Yellow)y$(UI.Color.Default),$(UI.Color.Yellow)n$(UI.Color.Default)]$(UI.Color.Default)" doit
     echo ""
     case $doit in
-        y|Y) sh -c ./util/install-node-debian.sh
+        y|Y) bash ../util/install-node-debian.sh
     esac
     ###
     echo ""
@@ -69,14 +73,14 @@ try {
     read -n1 -p "$(UI.Color.Cyan)Choose: [$(UI.Color.Yellow)y$(UI.Color.Default),$(UI.Color.Yellow)n$(UI.Color.Default)]$(UI.Color.Default)" doit
     echo ""
     case $doit in
-        y|Y) sh -c ./util/install-rust-wsl.sh
+        y|Y) sh -c ../util/install-rust-wsl.sh
     esac
     echo ""
     Log "$(UI.Color.Cyan)$(UI.Powerline.Cog) Install $(UI.Color.Red)Java?$(UI.Color.Default)"
     read -n1 -p "$(UI.Color.Cyan)Choose: [$(UI.Color.Yellow)y$(UI.Color.Default),$(UI.Color.Yellow)n$(UI.Color.Default)]$(UI.Color.Default)" doit
     echo ""
     case $doit in
-        y|Y) sh -c ./util/install-openjdk.sh
+        y|Y) sh -c ../util/install-openjdk.sh
     esac
     echo ""
     ###
@@ -85,7 +89,7 @@ try {
     read -n1 -p "$(UI.Color.Cyan)Choose: [$(UI.Color.Yellow)y$(UI.Color.Default),$(UI.Color.Yellow)n$(UI.Color.Default)]$(UI.Color.Default)" doit
     echo ""
     case $doit in
-        y|Y) sh -c ./util/install-wakatime.sh
+        y|Y) sh -c ../util/install-wakatime.sh
     esac
     echo ""
     ###
