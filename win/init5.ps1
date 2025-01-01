@@ -44,16 +44,6 @@ function install() {
     #
     if (Get-Command winget -errorAction SilentlyContinue) {
         Write-ColorOutput cyan "winget is installed >> Proceeding...";
-        try {
-            Write-ColorOutput cyan "Installing winget";
-            $WebClient = New-Object System.Net.WebClient
-            $WebClient.DownloadFile("https://github.com/microsoft/winget-cli/releases/download/v1.2.10271/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle","C:\temp\winget.msixbundle")
-            Add-AppPackage -path "C:\temp\winget.msixbundle"
-        } catch {
-            LogCodeAndExit "Error installing winget" $_
-        } finally {
-            Remove-Item "C:\temp\winget.msixbundle"
-        }
     } else {
         try {
             Write-ColorOutput cyan "Installing winget";
@@ -86,10 +76,10 @@ function install() {
     ##
     Write-ColorOutput cyan "Customizing powershell profile...";
     try {
-        $theme = "oh-my-posh.json"
+        $theme = "$PSScriptRoot\oh-my-posh.json"
         "oh-my-posh init pwsh --config $theme | Invoke-Expression" | Out-File $PROFILE
         Write-ColorOutput cyan ">> Init oh-my-posh";
-        oh-my-posh init pwsh --config "$theme" | Invoke-Expression
+        #oh-my-posh init pwsh --config "$theme" | Invoke-Expression
     } catch {
         LogCodeAndExit "Error on init oh-my-posh!" $_
     }
